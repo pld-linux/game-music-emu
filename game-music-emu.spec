@@ -2,7 +2,7 @@ Summary:	Collection of video game music file emulators
 Summary(pl.UTF-8):	Zbiór emulatorów do odtwarzania muzyki z gier
 Name:		game-music-emu
 Version:	0.5.5
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: http://code.google.com/p/game-music-emu/downloads/list
