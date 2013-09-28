@@ -1,15 +1,14 @@
 Summary:	Collection of video game music file emulators
 Summary(pl.UTF-8):	Zbiór emulatorów do odtwarzania muzyki z gier
 Name:		game-music-emu
-Version:	0.5.5
-Release:	3
+Version:	0.6.0
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: http://code.google.com/p/game-music-emu/downloads/list
-Source0:	http://game-music-emu.googlecode.com/files/%{name}-%{version}.tbz2
-# Source0-md5:	94459001a763fb76209a550a03b7949e
+Source0:	http://game-music-emu.googlecode.com/files/%{name}-%{version}.tar.bz2
+# Source0-md5:	b98fafb737bc889dc65e7a8b94bd1bf5
 URL:		http://code.google.com/p/game-music-emu/
-Patch0:		%{name}-multilib.patch
 BuildRequires:	cmake >= 2.6
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -63,7 +62,6 @@ wykorzystujących bibliotekę game-music-emu.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake \
@@ -100,3 +98,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgme.so
 %{_includedir}/gme
+%{_pkgconfigdir}/libgme.pc
