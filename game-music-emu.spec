@@ -8,6 +8,7 @@ Group:		Libraries
 #Source0Download: http://code.google.com/p/game-music-emu/downloads/list
 Source0:	http://game-music-emu.googlecode.com/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	b98fafb737bc889dc65e7a8b94bd1bf5
+Patch0:		%{name}-multilib.patch
 URL:		http://code.google.com/p/game-music-emu/
 BuildRequires:	cmake >= 2.6
 BuildRequires:	libstdc++-devel
@@ -62,6 +63,7 @@ wykorzystujących bibliotekę game-music-emu.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake \
