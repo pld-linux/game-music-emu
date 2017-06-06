@@ -1,17 +1,17 @@
 Summary:	Collection of video game music file emulators
 Summary(pl.UTF-8):	Zbiór emulatorów do odtwarzania muzyki z gier
 Name:		game-music-emu
-Version:	0.6.0
-Release:	2
+Version:	0.6.1
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://bitbucket.org/mpyne/game-music-emu/downloads
 Source0:	https://bitbucket.org/mpyne/game-music-emu/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	b98fafb737bc889dc65e7a8b94bd1bf5
-Patch0:		%{name}-multilib.patch
+# Source0-md5:	d399f4a00aece2813e777dface2b6aab
 URL:		https://bitbucket.org/mpyne/game-music-emu/wiki/Home
 BuildRequires:	cmake >= 2.6
 BuildRequires:	libstdc++-devel
+BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,25 +63,18 @@ wykorzystujących bibliotekę game-music-emu.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%cmake \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DLIB_INSTALL_DIR=%{_libdir} \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64 \
-%endif
-	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
-	-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-	-DCMAKE_VERBOSE_MAKEFILE=ON
+install -d build
+cd build
+%cmake ..
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
