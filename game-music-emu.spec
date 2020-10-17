@@ -11,6 +11,7 @@ Source0:	https://bitbucket.org/mpyne/game-music-emu/downloads/%{name}-%{version}
 URL:		https://bitbucket.org/mpyne/game-music-emu/wiki/Home
 BuildRequires:	cmake >= 2.6
 BuildRequires:	libstdc++-devel
+BuildRequires:	libubsan-devel
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
