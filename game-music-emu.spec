@@ -2,7 +2,7 @@ Summary:	Collection of video game music file emulators
 Summary(pl.UTF-8):	Zbiór emulatorów do odtwarzania muzyki z gier
 Name:		game-music-emu
 Version:	0.6.3
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://bitbucket.org/mpyne/game-music-emu/downloads
@@ -11,7 +11,7 @@ Source0:	https://bitbucket.org/mpyne/game-music-emu/downloads/%{name}-%{version}
 URL:		https://bitbucket.org/mpyne/game-music-emu/wiki/Home
 BuildRequires:	cmake >= 2.6
 BuildRequires:	libstdc++-devel
-BuildRequires:	libubsan-devel
+%{?debug:BuildRequires:	libubsan-devel}
 BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -70,7 +70,8 @@ wykorzystujących bibliotekę game-music-emu.
 %build
 install -d build
 cd build
-%cmake ..
+%cmake .. \
+	%{!?debug:-DENABLE_UBSAN=OFF}
 
 %{__make}
 
