@@ -5,10 +5,12 @@ Version:	0.6.3
 Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
-#Source0Download: https://bitbucket.org/mpyne/game-music-emu/downloads
+# new versions will use github
+#Source0Download: https://github.com/libgme/game-music-emu/releases
+#Source0:	https://github.com/libgme/game-music-emu/archive/%{version}/%{name}-%{version}.tar.gz
 Source0:	https://bitbucket.org/mpyne/game-music-emu/downloads/%{name}-%{version}.tar.xz
 # Source0-md5:	c96c65efbadc9acb10c0f9382ba66e0d
-URL:		https://bitbucket.org/mpyne/game-music-emu/wiki/Home
+URL:		https://github.com/libgme/game-music-emu/releases
 BuildRequires:	cmake >= 2.6
 BuildRequires:	libstdc++-devel
 %{?debug:BuildRequires:	libubsan-devel}
